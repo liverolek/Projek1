@@ -36,7 +36,7 @@
     </head>
     <body class="mb-48">
         {{-- <nav class=" justify-between items-center mb-4"> --}}
-        <nav class="top-0 left-0 w-full fixed flex items-center justify-start font-bold bg-laravel text-white h-24 mt-0 opacity-90">
+        <nav class="top-0 left-0 w-full fixed flex items-center justify-start font-bold bg-laravel text-white h-24 mt-0 opacity-100">
             <ul class="fixed flex space-x-6 ml-4 mt-2 text-lg">
                 <li>
                     <a

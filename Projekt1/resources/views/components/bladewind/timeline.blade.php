@@ -4,9 +4,11 @@
     'logo' => '',
 'title' => '',
 'id' => '',
+'type_id' => '',
 'description' => '',
 'date' => '',
 'type' => '',
+'process' => '',
 
     'last' => 'false',
     'color' => 'cyan',
@@ -46,13 +48,18 @@
         ],
     ],
 ])
+
+
+            
+            
+
 <div class="flex text-slate-600 justify-left ml-10">
     @if($stacked !== 'true')
     <div class="pr-5 pt-1 w-[63px]  font-semibold whitespace-nowrap {{ $coloring['text'][$color] }}">{!!$date!!}</div>
     
     @endif
     <div class="z-20 ml-10">
-        <div class="h-8 w-8 @if($status=='pending') bg-white border-4 {{ $coloring['border'][$color] }}  @else {{$coloring['bg'][$color]}} @endif rounded-full"></div>
+        <div class="h-8 w-8 @if($process=='true_start') bg-white border-4 {{ $coloring['border'][$color] }}  @else {{$coloring['bg'][$color]}} @endif rounded-full"></div>
     </div>
     <div class="@if($last!='true') border-l-4 {{ $coloring['border'][$color] }}@endif pl-8 pb-14 z-10 text-lg" style="margin-left: -18px">
         @if($stacked == 'true') <div class="font-semibold {{ $coloring['text'][$color] }}">{!!$date!!}</div> @endif
@@ -62,11 +69,30 @@
        
         <div>
             <h3 class="text-xl">
+
+                @if($process == "false")
+
                 <a href="/event/{{$id}}">{{$title}}</a>
+                @else
+                <a href="/process/{{$id}}">{{$title}}</a>
+
+                @endif
                 
             </h3>
+
+            @if($process == "true_start")
+            <div class="text-xs text-bold mt-4">
+                Started
+            </div>
+            @elseif($process == "true_end")
+            <div class="text-xs mt-4">
+                Ended
+            </div>
+            @endif
             
-            
+            <div class="text-lg mt-4 {{ $coloring['text'][$color] }}">
+                {{$type}}
+            </div>
           
             <div class="text-lg mt-4">
               

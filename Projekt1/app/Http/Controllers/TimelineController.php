@@ -30,9 +30,12 @@ class TimelineController extends Controller
                 [
                     'title' => $process["title"],
                     'date' => $process["start_date"],
+                    'logo' => $process["logo"],
                     'type_id' => $process["type_id"],
-                    'description' => "Process started!" . "\n" . $process["description"],
-                    'long_description' => $process["long_description"]
+                    'description' => $process["description"],
+                    'long_description' => $process["long_description"],
+                    'process' => "true_start",
+                    'id' => $process["id"]
                 ]
                 );
 
@@ -40,9 +43,12 @@ class TimelineController extends Controller
                 [
                     'title' => $process["title"],
                     'date' => $process["end_date"],
+                    'logo' => $process["logo"],
                     'type_id' => $process["type_id"],
-                    'description' => "Process ended! " . $process["description"],
-                    'long_description' => $process["long_description"]
+                    'description' => $process["description"],
+                    'long_description' => $process["long_description"],
+                    'process' => "true_end",
+                    'id' => $process["id"]
                 ]
                 );
 
@@ -50,10 +56,35 @@ class TimelineController extends Controller
 
         }
 
+
+        function event(array $process)
+        {
+          
+            $event1 = new Events(
+                [
+                    'title' => $process["title"],
+                    'date' => $process["date"],
+                    'logo' => $process["logo"],
+                    'type_id' => $process["type_id"],
+                    'description' => $process["description"],
+                    'long_description' => $process["long_description"],
+                    'process' => "false",
+                    'id' => $process["id"]
+                ]
+                );
+
+            
+            return [$event1];
+
+        }   
+
+
         $processes = array_merge(...array_map('App\Http\Controllers\split_process', Processes::all()->toArray()));
+
+        $events = array_merge(...array_map('App\Http\Controllers\event', Events::all()->toArray()));
        
        
-        $events = Events::all()->toArray();
+        // $events = Events::all()->toArray();
 
         $all_events = array_merge($processes, $events);
         // dd($all_events);

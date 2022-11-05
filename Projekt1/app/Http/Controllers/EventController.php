@@ -39,7 +39,7 @@ public function create_event(){
 //Store Events Data
 public function store_events(Request $request){
         $formFields2 = $request->validate([
-            'title' => ['required', 'unique:events'],  
+            'title' => 'required',
             'date' => 'required',
             'type_id' => 'required',
             'description' => 'required',
@@ -69,7 +69,7 @@ public function edit_event(Events $event){
 public function update_event(Request $request, Events $event){
         
     $formFields2 = $request->validate([
-        'title' => ['required', 'unique:events'],
+        'title' => 'required',
         'date' => 'required',
          'type_id' => 'required',
         'description' => 'required',

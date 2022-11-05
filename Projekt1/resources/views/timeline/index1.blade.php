@@ -27,9 +27,10 @@
 
        
         <x-bladewind.timeline date="{{{ $event['date'] }}}
-        " title="{{{ $event['title'] }}}"
-            description="{{{ $event['description'] }}}" logo="{{{ $event['logo'] }}}" id="{{{ $event['type_id'] }}}"
-            status="completed" color="{{$types->find($event['type_id'])->color}}"/>
+        " title="{{{ $event['title'] }}}" process="{{{$event['process']}}}"
+            description="{{{ $event['description'] }}}" logo="{{{ $event['logo'] }}}" id="{{{ $event['id'] }}}"
+            status="completed" color="{{$types->find($event['type_id'])->color}}" type="{{$types->find($event['type_id'])->name}} " 
+            />
 @endforeach
 
     </div>
