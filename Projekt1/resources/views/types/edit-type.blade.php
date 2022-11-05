@@ -33,12 +33,37 @@
                 class="inline-block text-lg mb-2"
                 >Color</label
             >
-            <input
+            {{-- <input
                 type="text"
-                {{-- class="border border-gray-200 rounded p-6 w-full" --}}
+            
                 class="form-control colorpicker border-gray-200 rounded p-2 w-full" 
                 name="color" value="{{$type->color}}"
+            /> --}}
+            
+            <input list="types"
+                
+                {{-- class="border border-gray-200 rounded p-6 w-full" --}}
+                class="form-control border-gray-200 rounded p-2 w-full" 
+                name="color" value="{{$type->color}}"
             />
+
+            <datalist id="types">
+                
+ 
+                <option value="blue"></option>
+                <option value="yellow"></option>
+                <option value="red"></option>
+                <option value="green"></option>
+                <option value="orange"></option>
+                <option value="purple"></option>
+                <option value="cyan"></option>
+                <option value="pink"></option>
+                <option value="black"></option>
+               
+             </datalist>
+
+
+
             @error('color')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror

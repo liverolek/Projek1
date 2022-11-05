@@ -31,7 +31,7 @@ class ProcessController extends Controller
      public function store_processes(Request $request){
         
         $formFields1 = $request->validate([
-            'title' => 'required',
+            'title' => ['required', 'unique:processes'],            
             'start_date' => 'required',
             'end_date' => 'required | after:start_date',
             'type_id' => 'required',
@@ -64,7 +64,7 @@ class ProcessController extends Controller
      public function update_process(Request $request, Processes $process){
         
         $formFields1 = $request->validate([
-            'title' => 'required',
+            'title' => ['required', 'unique:processes'],  
             'start_date' => 'required',
             'end_date' => 'required | after:start_date',
              'type_id' => 'required',

@@ -22,10 +22,14 @@
 
 
         @foreach ($events as $event)
+
+        
+
+       
         <x-bladewind.timeline date="{{{ $event['date'] }}}
         " title="{{{ $event['title'] }}}"
             description="{{{ $event['description'] }}}" logo="{{{ $event['logo'] }}}" id="{{{ $event['type_id'] }}}"
-            status="completed" color="red"/>
+            status="completed" color="{{$types->find($event['type_id'])->color}}"/>
 @endforeach
 
     </div>

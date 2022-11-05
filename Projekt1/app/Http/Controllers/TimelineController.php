@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Events;
 use App\Models\Processes;
 use App\Models\Timeline;
+use App\Models\Types;
 
 use Illuminate\Http\Request;
 use Symfony\Component\Process\Process;
@@ -40,7 +41,7 @@ class TimelineController extends Controller
                     'title' => $process["title"],
                     'date' => $process["end_date"],
                     'type_id' => $process["type_id"],
-                    'description' => $process["description"],
+                    'description' => "Process ended! " . $process["description"],
                     'long_description' => $process["long_description"]
                 ]
                 );
@@ -78,7 +79,9 @@ class TimelineController extends Controller
             [
                 'events' => $all_events,
 
-                'events1' => Events::all()
+                'events1' => Events::all(),
+                'types' => Types::all(),
+                
             ]
         );
 

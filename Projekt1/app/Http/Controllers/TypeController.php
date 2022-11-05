@@ -38,8 +38,9 @@ class TypeController extends Controller
      public function store_types(Request $request){
         
         $formFields3 = $request->validate([
-            'name' => 'required',
+            'name' => ['required', 'unique:types'],
             'color' => 'required'
+
            
 
         ]);
@@ -61,7 +62,7 @@ class TypeController extends Controller
      public function update_type(Request $request, Types $type){
         
         $formFields3 = $request->validate([
-            'name' => 'required',
+            'name' => ['required', 'unique:types'],
             'color' => 'required'
 
         ]);

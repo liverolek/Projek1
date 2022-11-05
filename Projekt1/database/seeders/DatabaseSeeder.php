@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 
+use App\Models\User;
 use App\Models\Listing;
 use App\Models\Types;
 use App\Models\Events;
@@ -17,7 +18,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(5)->create();
 
      
-
+        
+ 
         
         Types::create(
             [
@@ -53,7 +55,7 @@ class DatabaseSeeder extends Seeder
                     'end_date' => '2022-07-30',
                     'description' => 'It was an amazing journey',
                     'long_description' => 'Boat trip took place in Mazury - Mikołajki',
-                    'type_id' => '1'
+                    'type_id' => '2'
                 ]
                 );
 
