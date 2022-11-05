@@ -1,5 +1,5 @@
 <x-layout>
-   
+
 
     <a href="/" class="inline-block text-black ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
     </a>
@@ -7,9 +7,9 @@
         <x-card class="p-10">
             <div class="flex flex-col items-center justify-center text-center">
                 <h3 class="text-xl mb-6">Type: {{ $type->name }}</h3>
-                
-                <div class="text-500 font-bold mb-4">HEX Color: {{$type->color}}</div>
-            <div><i class="fa-sharp fa-2x fa-solid fa-tag" style="color:{{$type->color}};"></i></div>
+
+                <div class="text-500 font-bold mb-4">HEX Color: {{ $type->color }}</div>
+                <div><i class="fa-sharp fa-2x fa-solid fa-tag" style="color:{{ $type->color }};"></i></div>
             </div>
         </x-card>
 

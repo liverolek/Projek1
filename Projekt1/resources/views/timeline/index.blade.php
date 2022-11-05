@@ -1,45 +1,39 @@
 <x-layout>
-    
-  
-  <h2 class="flex text-2xl justify-center font-bold uppercase mb-1 my-10">
-    Memories
-</h2>
-<p class="flex justify-center my-5">
-    Welcome,
-    here you find some memories from our community life
-</p>
-  
-    <div class="lg:grid lg:grid-cols-1 gap-4 space-y-4 md:space-y-0 mx-4">
-  
-      @unless(count($events) == 0)
-  
-      @foreach($events as $event)
-      
-      <x-event-card :event="$event" />
-    
-      @endforeach
-  
-      @else
-      <p>No listings found</p>
-      @endunless
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('../css/timeline.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-      @unless(count($processes) == 0)
-  
-      @foreach($processes as $process)
-      <x-process-card :process="$process" />
-      @endforeach
-  
-      @else
-      <p>No listings found</p>
-      @endunless
-  
+   
+    <h2 class="flex text-2xl justify-center font-bold uppercase mb-1 my-10">
+        Memories
+    </h2>
+    <p class="flex justify-center my-5">
+        Welcome,
+        here you find some memories from our community life
+    </p>
+
+
+
+    <div class="mt-20">
+        
+
+      
+       
+
+
+        @foreach ($events as $event)
+
+        
+
+       
+        <x-timeline date="{{{ $event['date'] }}}
+        " title="{{{ $event['title'] }}}" process="{{{$event['process']}}}"
+            description="{{{ $event['description'] }}}" logo="{{{ $event['logo'] }}}" id="{{{ $event['id'] }}}"
+            status="completed" color="{{$types->find($event['type_id'])->color}}" type="{{$types->find($event['type_id'])->name}} " 
+            />
+@endforeach
+
     </div>
 
 
-  
-
-  
-
-  
-    
-  </x-layout>
+</x-layout>

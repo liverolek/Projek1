@@ -12,20 +12,17 @@ use Illuminate\Http\Request;
 use Symfony\Component\Process\Process;
 
 
-
-
 class TimelineController extends Controller
 {
 
-
-
-
-    // Show all listings
+    // Show timeline
     public function timeline()
     {
+
+        //Divided processes for 2 events
         function split_process(array $process)
         {
-          
+
             $start_event = new Events(
                 [
                     'title' => $process["title"],
@@ -56,10 +53,10 @@ class TimelineController extends Controller
 
         }
 
-
+        //Create array of events
         function event(array $process)
         {
-          
+
             $event1 = new Events(
                 [
                     'title' => $process["title"],
@@ -73,21 +70,18 @@ class TimelineController extends Controller
                 ]
                 );
 
-            
+
             return [$event1];
 
-        }   
+        }
 
+
+        //Merge all data in one array and sort it
 
         $processes = array_merge(...array_map('App\Http\Controllers\split_process', Processes::all()->toArray()));
-
         $events = array_merge(...array_map('App\Http\Controllers\event', Events::all()->toArray()));
-       
-       
-        // $events = Events::all()->toArray();
-
         $all_events = array_merge($processes, $events);
-        // dd($all_events);
+
         usort(
             $all_events, function ($a, $b) {
                 if ($a["date"] == $b["date"]) {
@@ -97,26 +91,15 @@ class TimelineController extends Controller
             }
         );
 
-       
-
-
-        
-
-        // dd($all_events);
-
-
         return view(
-            'timeline.index1',
+            'timeline.index',
             [
                 'events' => $all_events,
-
                 'events1' => Events::all(),
                 'types' => Types::all(),
-                
             ]
         );
 
     }
-
 
 }

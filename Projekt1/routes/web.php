@@ -1,7 +1,5 @@
 <?php
 
-
-
 use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListingController;
@@ -10,8 +8,6 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\UserController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -99,8 +95,7 @@ Route::delete('/type/{type}', [TypeController::class, 'destroy_type'])
 
 
 
-//to musi byc na dole!!! bo inaczej poszuka nam najpierw listings po nazwie np create
-
+//Show single object
 
 //Show single event
 Route::get('/event/{event}', [EventController::class, 'show_event']);
@@ -113,19 +108,14 @@ Route::get('/type/{type}', [TypeController::class, 'show_type'])
 ->middleware('auth');
 
 
-
-
-
+//Registration & Login
 
 //Show Register/Create Form
 Route::get('/register', [UserController::class, 'create'])
 ->middleware('guest');
 
-
-
 //Create Users
 Route::post('/users', [UserController::class, 'store']);
-
 
 //Logout
 Route::post('/logout', [UserController::class, 'logout']);
