@@ -6,6 +6,7 @@
 'id' => '',
 'description' => '',
 'date' => '',
+'type' => '',
 
     'last' => 'false',
     'color' => 'cyan',
@@ -48,6 +49,7 @@
 <div class="flex text-slate-600 justify-left ml-10">
     @if($stacked !== 'true')
     <div class="pr-5 pt-1 w-[63px]  font-semibold whitespace-nowrap {{ $coloring['text'][$color] }}">{!!$date!!}</div>
+    
     @endif
     <div class="z-20 ml-10">
         <div class="h-8 w-8 @if($status=='pending') bg-white border-4 {{ $coloring['border'][$color] }}  @else {{$coloring['bg'][$color]}} @endif rounded-full"></div>
@@ -55,14 +57,16 @@
     <div class="@if($last!='true') border-l-4 {{ $coloring['border'][$color] }}@endif pl-8 pb-14 z-10 text-lg" style="margin-left: -18px">
         @if($stacked == 'true') <div class="font-semibold {{ $coloring['text'][$color] }}">{!!$date!!}</div> @endif
         
-        {{-- <div><i class="fa-sharp fa-2x fa-solid fa-tag" style="color:{{$type->color}};"></i></div> --}}
+        
         
        
         <div>
             <h3 class="text-xl">
                 <a href="/event/{{$id}}">{{$title}}</a>
+                
             </h3>
-            <div class="text-l font-bold mb-4"><li>Date: {{$date}}</li></div>
+            
+            
           
             <div class="text-lg mt-4">
               
